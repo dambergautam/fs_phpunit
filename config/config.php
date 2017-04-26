@@ -61,24 +61,24 @@ ini_set("display_errors", 1);
 
 //Load other classes
 if(isset($is_admin) && $is_admin == true){
-    $CONF_ADMIN = true;
+    define("CONF_ADMIN", true);
 }else{
-    $CONF_ADMIN = false;
+    define("CONF_ADMIN", false);
 }
 
-spl_autoload_register(function($class_name){
-    global $CONF_ADMIN;
-    global $root_dir;
 
+spl_autoload_register(function($class_name){
+    $root_dir = "c:/wamp/www/fellowship";
+    
     //Applicant Path
     $dir = $root_dir."/app/class/";
     
     //Admin path
-    if($CONF_ADMIN == true){ $dir = $root_dir."/app/fw_admin/class/"; }
+    if(CONF_ADMIN == true){ $dir = $root_dir."/app/fw_admin/class/"; }
     
     //loading local one
     if( strtolower($class_name) != 'mysql_class'){
-    
+        
         //include files
         if(file_exists($dir.$class_name.".php")){
             include_once($dir.$class_name.".php");
@@ -95,15 +95,23 @@ spl_autoload_register(function($class_name){
         }else if(file_exists($dir.ucfirst($class_name).".php")){
             include_once($dir.ucfirst($class_name).".php");        
         }
+        
     }
 });    
 
 
-//Load date and time class from applicant class folder for admin
-if($CONF_ADMIN === true){
-    include $root_dir.'/app/class/carbonDateTime.php';
+//Load default module for admin
+if(CONF_ADMIN === true){
+    //Date and time (From applicant module)
+    include $root_dir.'/app/class/carbonDateTime.php'; 
+    include $root_dir."/app/fw_admin/object/common_class_object.php";
+    
+//Load default module for applicant    
+}else{
+    include $root_dir."/app/object/user_common_object.php";
 }
 
-//Mysql class
+//Shared modules
 require_once $root_dir.'/test/Mysql_class.php';
 require_once $root_dir.'/app/object/mysql_object.php';
+include $root_dir."/app/object/carbonDateTime_obj.php"; 

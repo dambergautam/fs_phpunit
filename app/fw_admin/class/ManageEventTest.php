@@ -1,4 +1,6 @@
 <?php
+$is_admin = true;
+        
 //Add Config file
 require_once 'c:/wamp/www/fellowship/test/config/config.php';
 
@@ -9,18 +11,13 @@ require_once $root_dir.'/app/fw_admin/class/ManageEvent.php';
 //Test ManageEvent
 class ManageEventTest extends PHPUnit_Framework_TestCase{
     
-    public $objMngEvent;
-
-    public function setUp() {
-        
-        $this->objMngEvent = new ManageEvent();
-        
-    }
     
-    public function testCountEvent(){
-        $num = $this->objMngEvent->countEvent();
-        //echo $num; die();
-        $this->assertEquals(40, $num);
+    public function testRemoveEvent(){
+        $objMngEvent = new ManageEvent();
+        $event_id = 35;
+        $this->assertTrue($objMngEvent->removeEvent($event_id));
     }
+
+
     
 }
