@@ -2,7 +2,7 @@
 $is_admin = true;
         
 //Add Config file
-require_once 'c:/wamp/www/fellowship/test/config/config.php';
+require_once $root_dir.'/test/config/config.php';
 
 
 //Class to be tested

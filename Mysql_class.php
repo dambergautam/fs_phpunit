@@ -1,16 +1,6 @@
 <?php
 /**
  * MySQL Query Class
- *
- * This is global query class to build and execute sql statement as well as get table data.
- *
- * @package	Fellowshipv2
- * @subpackage	Admin
- * @category	Shared Functions
- * @version     Version 2.0
- * @author	Damber Prasad Gautam
- * @copyright	Copyright (c) 2016, APNIC.
- * @link	https://www.apnic.net/
  */
 class Mysql_class{
     /**

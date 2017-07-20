@@ -1,20 +1,20 @@
 <?php
 //Salt
-$FS = "fs02_";
+$FS = "saltvalue";
 
 //PHPUnit test project root
-$root_dir = 'c:/wamp/www/fellowship';
+$root_dir = 'c:/wamp/www/<project>';
 
 //Setting base and admin url path as per http host url
-$base_url = "http://fellowship.localhost";
-$admin_url = "http://fellowship.localhost/fw_admin";   
+$base_url = "url";
+$admin_url = "url/admin";   
 
 //Load database properties file
 $db_properties = array(
             "HOST_NAME"=> "localhost",
             "DB_USER"=> "root",
             "DB_PSWD" => "",
-            "DB_NAME"=> "fellowship_del",
+            "DB_NAME"=> "databasename",
             "PROJECT_ENV" =>"local"
         );
 
